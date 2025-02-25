@@ -1,6 +1,6 @@
 # Artwork API
 
-This project provides a RESTful API to interact with an artwork database.The data is stored in a Supabase database.
+This project provides a RESTful API to interact with an artwork database. The data is stored in a Supabase database.
 
 The API runs on port **8080**.
 
@@ -8,81 +8,81 @@ The API runs on port **8080**.
 
 ### Eras
 - **GET http://34.121.50.50:8080/api/eras**  
-  Retrieves a list of all eras.
+  Returns all the eras.
 
 ### Galleries
-- **GET http://34.121.50.50:8080/api/galleries**  
-  Retrieves a list of all galleries.
-  
-- **GET http://34.121.50.50:8080/api/galleries/30**  
-  Retrieves a specific gallery by its ID (e.g., gallery ID 30).
-  
-- **GET http://34.121.50.50:8080/api/galleries/country/fra**  
-  Retrieves galleries whose country name begins with "fra" (e.g., France).
+- **GET http://34.121.50.50:8080/api/gallery**  
+  Returns all the galleries (returns all fields in the galleries table).
+
+- **GET http://34.121.50.50:8080/api/galleries/1**  
+  Returns just the specified gallery (use the `galleryId` field, e.g., gallery ID 1).
+
+- **GET http://34.121.50.50:8080/api/galleries/country/fr**  
+  Returns galleries whose `galleryCountry` (case insensitive) begins with the provided substring (e.g., "fr").
 
 ### Artists
 - **GET http://34.121.50.50:8080/api/artists**  
-  Retrieves a list of all artists.
-  
-- **GET http://34.121.50.50:8080/api/artists/12**  
-  Retrieves a specific artist by their ID (e.g., artist ID 12).
-  
-- **GET http://34.121.50.50:8080/api/artists/search/ma**  
-  Searches for artists whose last name begins with "ma".
-  
-- **GET http://34.121.50.50:8080/api/artists/country/fra**  
-  Searches for artists whose nationality begins with "fra" (e.g., French).
+  Returns all the artists (returns all fields in the artists table).
+
+- **GET http://34.121.50.50:8080/api/artists/ref/1**  
+  Returns just the specified artist (use the `artistId` field, e.g., artist ID 1).
+
+- **GET http://34.121.50.50:8080/api/artists/search/van**  
+  Returns artists whose last name (case insensitive) begins with the provided substring (e.g., "van").
+
+- **GET http://34.121.50.50:8080/api/artists/country/ita**  
+  Returns artists whose nationality (case insensitive) begins with the provided substring (e.g., "ita").
 
 ### Paintings
 - **GET http://34.121.50.50:8080/api/paintings**  
-  Retrieves a list of all paintings, including artist and gallery details.
-  
+  Returns all the paintings (returns all fields in the paintings table, excluding foreign keys). Includes all artist and gallery fields. Sorted by title by default.
+
 - **GET http://34.121.50.50:8080/api/paintings/sort/title**  
-  Retrieves a list of paintings sorted by title.
-  
-- **GET http://34.121.50.50:8080/api/paintings/63**  
-  Retrieves a specific painting by its ID (e.g., painting ID 63).
-  
-- **GET http://34.121.50.50:8080/api/paintings/search/port**  
-  Searches for paintings whose title contains "port".
-  
-- **GET http://34.121.50.50:8080/api/paintings/years/1800/1850**  
-  Retrieves paintings from the years 1800 to 1850.
-  
-- **GET http://34.121.50.50:8080/api/paintings/galleries/5**  
-  Retrieves paintings from gallery ID 5.
-  
-- **GET http://34.121.50.50:8080/api/paintings/artist/16**  
-  Retrieves paintings by artist ID 16.
-  
-- **GET http://34.121.50.50:8080/api/paintings/artists/country/ital**  
-  Retrieves paintings by artists whose nationality begins with "ital" (e.g., Italian artists).
-  
-- **GET http://34.121.50.50:8080/api/paintings/genre/78**  
-  Retrieves paintings for genre ID 78.
-  
-- **GET http://34.121.50.50:8080/api/paintings/era/2**  
-  Retrieves paintings for era ID 2.
+  Returns all paintings sorted by title.
+
+- **GET http://34.121.50.50:8080/api/paintings/sort/year**  
+  Returns all paintings sorted by `yearOfWork`.
+
+- **GET http://34.121.50.50:8080/api/paintings/ref/1**  
+  Returns just the specified painting (use the `paintingId` field, e.g., painting ID 1).
+
+- **GET http://34.121.50.50:8080/api/paintings/search/mona**  
+  Returns paintings whose title (case insensitive) contains the provided substring (e.g., "mona").
+
+- **GET http://34.121.50.50:8080/api/paintings/years/1500/1600**  
+  Returns paintings between two years (inclusive), ordered by `yearOfWork` (e.g., years 1500 to 1600).
+
+- **GET http://34.121.50.50:8080/api/paintings/galleries/ref/1**  
+  Returns all paintings in a given gallery (use the `galleryId` field, e.g., gallery ID 1).
+
+- **GET http://34.121.50.50:8080/api/paintings/artist/ref/1**  
+  Returns all paintings by a given artist (use the `artistId` field, e.g., artist ID 1).
+
+- **GET http://34.121.50.50:8080/api/paintings/artists/country/ita**  
+  Returns all paintings by artists whose nationality begins with the provided substring (e.g., "ita").
 
 ### Genres
 - **GET http://34.121.50.50:8080/api/genres**  
-  Retrieves a list of all genres.
-  
-- **GET http://34.121.50.50:8080/api/genres/76**  
-  Retrieves a specific genre by its ID (e.g., genre ID 76).
-  
-- **GET http://34.121.50.50:8080/api/genres/painting/408**  
-  Retrieves genres associated with painting ID 408.
-  
-- **GET http://34.121.50.50:8080/api/paintings/genre/78**  
-  Retrieves all paintings for genre ID 78.
+  Returns all genres (includes all era fields).
+
+- **GET http://34.121.50.50:8080/api/genres/ref/1**  
+  Returns just the specified genre (use the `genreId` field, e.g., genre ID 1).
+
+- **GET http://34.121.50.50:8080/api/genres/painting/ref/1**  
+  Returns the genres used in a given painting (ordered by `genreName` in ascending order, e.g., painting ID 1).
+
+- **GET http://34.121.50.50:8080/api/paintings/genre/ref/1**  
+  Returns all paintings for a given genre (use the `genreId` field, e.g., genre ID 1). Returns only `paintingId`, `title`, and `yearOfWork`, sorted by `yearOfWork`.
+
+- **GET http://34.121.50.50:8080/api/paintings/era/ref/1**  
+  Returns all paintings for a given era (use the `eraId` field, e.g., era ID 1). Returns only `paintingId`, `title`, and `yearOfWork`, sorted by `yearOfWork`.
 
 ### Counts
 - **GET http://34.121.50.50:8080/api/counts/genres**  
-  Retrieves genre counts (how many paintings are associated with each genre).
+  Returns the genre name and the number of paintings for each genre, sorted by the number of paintings (fewest to most).
 
 - **GET http://34.121.50.50:8080/api/counts/artists**  
-  Retrieves artist counts (how many paintings each artist has).
+  Returns the artist name (first name + last name) and the number of paintings for each artist, sorted by the number of paintings (most to fewest).
 
-- **GET http://34.121.50.50:8080/api/counts/topgenres/20**  
-  Retrieves the top genres by painting count, filtering genres with a minimum count of 20.
+- **GET http://34.121.50.50:8080/api/counts/topgenres/10**  
+  Returns the genre name and the number of paintings for each genre, sorted by the number of paintings (most to least), for genres with more than the specified number of paintings (e.g., 10).
