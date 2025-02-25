@@ -52,7 +52,7 @@ The API runs on port **8080**.
 - **GET http://34.121.50.50:8080/api/paintings/years/1500/1600**  
   Returns paintings between two years (inclusive), ordered by `yearOfWork` (e.g., years 1500 to 1600).
 
-- **GET http://34.121.50.50:8080/api/paintings/galleries/ref/1**  
+- **GET http://34.121.50.50:8080/api/paintings/galleries/ref/20**  
   Returns all paintings in a given gallery (use the `galleryId` field, e.g., gallery ID 1).
 
 - **GET http://34.121.50.50:8080/api/paintings/artist/ref/1**  
