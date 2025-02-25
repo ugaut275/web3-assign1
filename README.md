@@ -68,7 +68,7 @@ The API runs on port **8080**.
 - **GET http://34.121.50.50:8080/api/genres/ref/1**  
   Returns just the specified genre (use the `genreId` field, e.g., genre ID 1).
 
-- **GET http://34.121.50.50:8080/api/genres/painting/ref/1**  
+- **GET http://34.121.50.50:8080/api/genres/painting/ref/23**  
   Returns the genres used in a given painting (ordered by `genreName` in ascending order, e.g., painting ID 1).
 
 - **GET http://34.121.50.50:8080/api/paintings/genre/ref/1**  
